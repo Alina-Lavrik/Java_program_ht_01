@@ -2,17 +2,23 @@ package Seminar_01.Heroes;
 
 public class Shooter extends BaseHero{
     /**Боеприпасы*/
-    private int ammunition;
-    private String gun;
+    protected int ammunition;
+    protected String gun;
     /**Меткая стрельба*/
-    private int markmanship;
+    protected int markmanship;
 
-    public Shooter(String heroID, int health, int endurance, int speed, int life, int level, int money, int ammunition, String gun, int markmanship) {
-        super(heroID, health, endurance, speed, life, level, money);
-
+    public Shooter(String hero, String name, int health, int endurance, int speed, int life, 
+        int level, int money, int ammunition, String gun, int markmanship) {
+        super(hero, name, health, endurance, speed, life, level, money);
         this.ammunition = ammunition;
         this.gun = gun;
         this.markmanship = markmanship;
+    }
+
+    
+    public String getInfo() {
+        return String.format("%s Ammunition: %d Gun: %s Markmanship: %d", 
+        super.getInfo(), this.ammunition, this.gun, this.markmanship);       
     }
 
     /**Делать выстрел */
@@ -29,4 +35,12 @@ public class Shooter extends BaseHero{
         }
         else return true;
     }
+
+    @Override
+    public void die() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    
 }

@@ -2,7 +2,8 @@ package Seminar_01.Heroes;
 import java.util.Random;
 
 public abstract class BaseHero {
-    protected String heroID;
+    protected String hero;
+    protected String name;
     protected int health;
     /**Выносливость*/
     protected int endurance;
@@ -15,8 +16,9 @@ public abstract class BaseHero {
 
 
 /**Конструктор который отвечает за инициализацию */
-public BaseHero(String heroID, int health, int endurance, int speed, int life, int level, int money) {
-    this.heroID = heroID;
+public BaseHero(String hero, String name, int health, int endurance, int speed, int life, int level, int money) {
+    this.hero = hero;
+    this.name = name;
     this.health = health;
     this.endurance = endurance;
     this.speed = speed;
@@ -27,8 +29,8 @@ public BaseHero(String heroID, int health, int endurance, int speed, int life, i
 
 /**Метод получения информации */
 public String getInfo() {
-    return String.format("HeroID: %s  Health: %d Endurance: %d Speed: %d Life %d Level: %d Money: %d",
-            this.heroID, this.health, this.endurance, this.speed, this.life, this.level, this.money, this.getClass().getSimpleName());           
+    return String.format("Hero: %s Name: %s Health: %d Endurance: %d Speed: %d Life: %d Level: %d Money: %d",
+            this.hero, this.name, this.health, this.endurance, this.speed, this.life, this.level, this.money, this.getClass().getSimpleName());           
 }
 
 /**Атакуем */
@@ -40,8 +42,10 @@ public void GetDamage(int damage) {
     if (this.health - damage > 0) {
         this.health -= damage;
     }
-    // else { die(); }
+    else { die(); }
 }
+public abstract void die();
 
 }
-//Поведение - ходьба, бег, спать, атака, защита
+// оведение - ходьба, бег, спать, атака, защита
+// Лечить будем увеличением жизней

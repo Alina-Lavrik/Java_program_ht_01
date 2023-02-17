@@ -9,6 +9,10 @@ import Seminar_01.Heroes.Villager;
 import Seminar_01.Heroes.Arbalester;
 import Seminar_01.Heroes.BaseHero;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Program {
     public static void main(String[] args) {
        
@@ -24,7 +28,7 @@ public class Program {
         BaseHero hero4 = new Magician();
         System.out.println(hero4.getInfo());
 
-        BaseHero hero5 = new Monk(null);
+        BaseHero hero5 = new Monk();
         System.out.println(hero5.getInfo());
 
         BaseHero hero6 = new Raider();
@@ -32,6 +36,47 @@ public class Program {
 
         BaseHero hero7 = new Spearman();
         System.out.println(hero7.getInfo());
+
+
+        /**Создать список и добавить в него 10 случаных персонажей*/
+        int teamCount = 10;
+        Random rand = new Random();
+
+        List<BaseHero> teams = new ArrayList<>();
+        for (int i = 0; i < teamCount; i++) {
+            int val = rand.nextInt(6);
+            switch (val) {
+                case 0:
+                    teams.add(new Arbalester());
+                    break;
+                case 1:
+                    teams.add(new Sniper());
+                    break;
+                case 2:
+                    teams.add(new Villager());
+                    break;
+                case 3:
+                    teams.add(new Magician());
+                    break;
+                case 4:
+                    teams.add(new Monk());
+                    break;  
+                case 5:
+                    teams.add(new Raider());
+                    break;
+                case 6:
+                    teams.add(new Spearman());
+                    break;     
+                default:
+                    // teams.add(new BaseHero());
+                    break;
+            }
+            System.out.println(teams.get(i).getInfo());
+        }
+
+        System.out.println();
+
+
 
         // #region ex2 Attack
         // System.out.println("------");

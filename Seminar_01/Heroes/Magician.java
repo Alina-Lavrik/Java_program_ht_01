@@ -3,15 +3,14 @@ package Seminar_01.Heroes;
 /**Колдун*/
 public class Magician extends Priest {
 
-String name;
-
     public Magician(){
-        super("Magician_01", 300, 300, 100, 5, 1, 500, 2000, 2000);
-        this.name = "Harry";
-
-
+        super("Magician__", "Harry", 300, 300, 99, 5, 1, 1500, 2000, 2000); 
     }
-    // public String getInfo() {
-    //     return String.format(" %s Mana: %d Elixir: %d Name: %s", super.getInfo(), this.name);  
-    // }
+
+
+   
+    /**Переопределить getInfo так, чтобы он возвращал строки:"Я крестьянин", "Я снайпер"  */
+    @Override
+    public String getInfo() { return "Я Колдун";}
+
 }

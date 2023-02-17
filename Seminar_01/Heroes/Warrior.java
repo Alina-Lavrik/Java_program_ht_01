@@ -1,17 +1,22 @@
 package Seminar_01.Heroes;
 
 public class Warrior extends BaseHero {
-    private int power;
+    protected int power;
     //*Оружие */
-    private String weapon;
-    private int hit;
+    protected String weapon;
+    protected int hit;
 
 
-public Warrior(String heroID, int health, int endurance, int speed, int life, int level, int money, int power, String weapon, int hit) {
-    super(heroID, health, endurance, speed, life, level, money);
+public Warrior(String hero, String name, int health, int endurance, int speed, int life, int level, int money, int power, String weapon, int hit) {
+    super(hero, name, health, endurance, speed, life, level, money);
     this.power = power;
     this.weapon = weapon;
     this.hit = hit;
+}
+
+public String getInfo() {
+    return String.format("%s Power: %d Weapon: %s Hit:%d", super.getInfo(), this.power, this.weapon, this.hit);
+  
 }
 
 /**Наносить удар */
@@ -28,6 +33,12 @@ public void GetRob(int rob) {
         this.money -= rob;
     }
     // else { no money(); }
+}
+
+@Override
+public void die() {
+    // TODO Auto-generated method stub
+    
 }
 
 

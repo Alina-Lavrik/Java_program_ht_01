@@ -1,14 +1,16 @@
 package Seminar_01.Heroes;
 
-
 public class Arbalester extends Shooter {
 
-String name;
-
     public Arbalester(){
-        super("Arbalester_01", 100, 200, 20, 3, 1, 1000, 3300, "Arbalest", 95);
-        this.name = "Mikle";
-
-
+        super("Arbalester", "Mikle", 100, 200, 20, 3, 1, 
+        1000, 3300, "Arbalest", 95);
+        
     }
+
+
+    /**Переопределить getInfo так, чтобы он возвращал строки:"Я крестьянин", "Я снайпер"  */
+    @Override
+    public String getInfo() { return "Я Арбалетчик"; }
+
 }

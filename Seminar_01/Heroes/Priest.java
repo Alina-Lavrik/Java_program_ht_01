@@ -5,11 +5,17 @@ public class Priest extends BaseHero {
     protected int elixir; 
 
 
-public Priest(String heroID, int health, int endurance, int speed, int life, int level, int money,int mana, int elixir) {
-    super(heroID, health, endurance, speed, life, level, money);
+public Priest(String hero, String name, int health, int endurance, int speed, int life, int level, int money,int mana, int elixir) {
+    super(hero, name, health, endurance, speed, life, level, money);
     this.elixir = elixir;
     this.mana = mana;
 }
+
+public String getInfo() {
+    return String.format("%s Mana: %d Elixir: %d", super.getInfo(), this.mana, this.elixir); 
+}
+
+
 
 public void ChangeMana(int mana, int crop){
 
@@ -38,5 +44,12 @@ public int getElixir() {
 public void setElixir(int elixir) {
     this.elixir = elixir;
 }
+
+@Override
+public void die() {
+    // TODO Auto-generated method stub
+    
+}
+
 
 }
