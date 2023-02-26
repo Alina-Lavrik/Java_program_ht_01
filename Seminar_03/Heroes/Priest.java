@@ -2,11 +2,11 @@ package Seminar_03.Heroes;
 
 
 public class Priest extends BaseHero {
-    protected int mana;
+    int mana;
      
 
 
-public Priest(String hero, String name, int health, int speed, int maxDamage, int minDamage, int mana, int attack, int protection) {
+public Priest(String hero, String name, int health, int speed, int maxDamage, int minDamage, int attack, int protection, int mana) {
     super(hero, name, health, speed, maxDamage, minDamage, attack, protection);
     this.mana = mana;
 }

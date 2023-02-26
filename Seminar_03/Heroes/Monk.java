@@ -4,8 +4,8 @@ package Seminar_03.Heroes;
 public class Monk extends Priest {
 
     public Monk(){
-        super("Monk______", "Polit", 30, 5, 0, -4, 1,
-         12, 7);
+        super("Monk______", "Polit", 30, 5, 0, -4, 7,
+         12, 1);
         
     }
 

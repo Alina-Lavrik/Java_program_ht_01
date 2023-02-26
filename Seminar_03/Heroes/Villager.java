@@ -4,8 +4,7 @@ public class Villager extends Warrior {
   
 
     public Villager() {
-        super("Villager__", "Green", 1, 1, 1, 0, 1, 1, 1);
-       
+        super("Villager__", "Green", 1, 3, 1, 0, 1, 1, 1);  
     }
 
 
