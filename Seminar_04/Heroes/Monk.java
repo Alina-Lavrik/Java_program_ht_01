@@ -3,14 +3,20 @@ package Seminar_04.Heroes;
 /**Монах*/
 public class Monk extends Priest {
 
-    public Monk(String name, int pointX, int pointY){
-        super("Monk______", name, 30, 5, 0, -4, 7,
-         12, 1, pointX, pointY);
+    public Monk(String name, int x, int y){
+        super("Monk", name, 30.f, 30, 5, 0, -4, 12,
+         7, x, y, 5, 5);
         
     }
 
-    /**Переопределить getInfo так, чтобы он возвращал строки:"Я крестьянин", "Я снайпер"  */
     @Override
-    public String getInfo() { return "Я Монах ";}
+    public StringBuilder getInfo() {
+        StringBuilder builder = new StringBuilder();
+        return builder.append("Монах:  \t").append(Monk.super.name)
+                .append("\t| ATK:\t").append(Monk.super.attack)
+                .append("\t| Health:\t").append(Monk.super.health)
+                .append(" \t| MP:\t").append(Monk.super.mana)
+                .append("\t|").append("\t| (X.Y) : ").append(Monk.super.pointXY.x).append(".").append(Monk.super.pointXY.y);
+    }
 
 }

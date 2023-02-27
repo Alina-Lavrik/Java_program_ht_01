@@ -6,59 +6,48 @@ import java.util.ArrayList;
 
 public abstract class BaseHero implements GameInterfase {
     protected String hero, name;
-    public int health, speed;
+    public float health;
+    public int speed;
     protected static Random r;
     protected int maxDamage, minDamage;
     protected int attack, protection;
     protected Point pointXY;
     protected String state;
-    protected int maxHealth;
+    protected float maxHealth;
    
 
 /**Конструктор который отвечает за инициализацию */
-public BaseHero(String hero, String name, int health, int speed, int maxDamage, int minDamage, int attack, int protection, 
-    int pointX, int pointY) {
+public BaseHero(String hero, String name, float health, int maxHealth, int speed, int maxDamage, int minDamage, int attack, int protection, 
+    int x, int y) {
     this.hero = hero;
     this.name = name;
     this.health = health;
+    this.maxHealth = maxHealth;
     this.speed = speed;
     this.maxDamage = maxDamage;
     this.minDamage = minDamage;
     this.attack = attack;
     this.protection = protection;
-    pointXY = new Point(pointX, pointY);
+    pointXY = new Point(x, y);
     state = "Stand";
-    this.maxHealth = health;
- 
+    
 }
-/**Метод получения информации */
-public String getInfo() {
-    return String.format("Hero: %s, Name: %s, Health: %d, Speed: %d, maxDamage: %d, minDamage: %d",
-            this.hero, this.name, this.health, this.speed, this.maxDamage, this.minDamage, this.getClass().getSimpleName());           
-}
+
 
 public static String getName(){
     return String.valueOf(Names.values()[new Random().nextInt(0, Names.values().length)]);
 }
 
-public int getSpeed() {
-    return speed;
-    //return String.format("Speed: %d", this.speed);
-}
+public int getSpeed() {return speed;}
 
-public int getHealth() {
-    return health;
-   //return String.format("Health: %d", this.health);
-
-}
+public float getHealth() {return this.health;}
 
 public String getQueue() {
     return String.format(" >> speed: %d", this.speed);
 }
 
 @Override
-    public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) {
-    }
+    public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) {}
 
     public void getDamage(float damage) {
         this.health -= damage;
@@ -81,7 +70,8 @@ public String getQueue() {
         }
         return index;
     }
-
+    @Override
+    public StringBuilder getInfo() {return new StringBuilder(""); }
 
 }
 

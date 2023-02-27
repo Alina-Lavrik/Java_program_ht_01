@@ -5,18 +5,16 @@ import java.util.ArrayList;
 public class Shooter extends BaseHero{
     /**выстрелы */
     int shoot;
-
+    protected int range;
       
-        public Shooter(String hero, String name, int health, int speed, int maxDamage, int minDamage, 
-        int attack, int protection, int shoot, int pointX, int pointY) {
-            super(hero, name, health, speed, maxDamage, minDamage, attack, protection, pointX, pointY);
+        public Shooter(String hero, String name, float health, int maxHealth, int speed, int maxDamage, int minDamage, 
+        int attack, int protection, int shoot, int x, int y, int range) {
+            super(hero, name, health, maxHealth, speed, maxDamage, minDamage, attack, protection, x, y);
             this.shoot = shoot;
+            this.range = range;
 
         }
         
-        public String getInfo() {
-                return String.format("Shoot: %d", super.getInfo(), this.shoot); 
-            }
         
 
 /**Реализовать метод step() у лучников */				
