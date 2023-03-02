@@ -27,7 +27,7 @@ public class Program {
         
 static final int UNITS = 10;
     public static void main(String[] args) {
-        
+      
         ArrayList<BaseHero> holyTeam = new ArrayList<>();
         ArrayList<BaseHero> darkTeam = new ArrayList<>();
         ArrayList<BaseHero> allTeam = new ArrayList<>();

@@ -13,7 +13,7 @@ public abstract class BaseHero implements GameInterfase {
     protected int attack, protection;
     protected Point pointXY;
     protected String state;
-    protected float maxHealth;
+    protected int maxHealth;
    
 
 /**Конструктор который отвечает за инициализацию */
@@ -40,7 +40,9 @@ public static String getName(){
 
 public int getSpeed() {return speed;}
 
-public float getHealth() {return this.health;}
+public float getHealth() {
+    return health;
+}
 
 public String getQueue() {
     return String.format(" >> speed: %d", this.speed);
@@ -72,6 +74,10 @@ public String getQueue() {
     }
     @Override
     public StringBuilder getInfo() {return new StringBuilder(""); }
+
+
+
+
 
 }
 

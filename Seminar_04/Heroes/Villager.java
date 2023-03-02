@@ -10,11 +10,6 @@ public class Villager extends Warrior {
         this.shoot = 1;
     }
 
-
-    /**Переопределить getInfo так, чтобы он возвращал строки:"Я крестьянин", "Я снайпер"  */
-    // @Override
-    // public String getInfo() {return "Я Крестьянин ";}
-
     // Сделать степ крестьян - если не труп то state = "Stand"
     // eсли не труп то найти среди своих персонажа с здоровьем меньше максимального и вылечить его!
 
@@ -41,6 +36,12 @@ public class Villager extends Warrior {
     public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) {
         if (!state.equals("Die"))
             state = "Stand";
+            for (BaseHero hero: team2) {
+                if (hero.health < hero.maxHealth & !hero.state.equals("Die")) {
+                    hero.health = maxHealth;
+                    return;
+                }
+            }
     }
 
 }
