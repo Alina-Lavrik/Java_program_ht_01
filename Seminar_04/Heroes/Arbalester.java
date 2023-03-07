@@ -4,9 +4,9 @@ package Seminar_04.Heroes;
 
 public class Arbalester extends Shooter {
 
-    public Arbalester(String name, int x, int y){
-        super("Arbalester", name, 10.f, 10, 4, 3, 2, 6, 
-        3, 20, x, y, 10);    
+    public Arbalester(String name, Vector2D coords){
+        super("Arbalester", name, 25.f, 10, 4, 3, 2, 6, 
+        3, 20, coords.posX, coords.posY, 10);    
     }
 
 
@@ -17,7 +17,8 @@ public class Arbalester extends Shooter {
                 .append("\t| ATK:\t").append(Arbalester.super.attack)
                 .append("\t| Health:\t").append(Arbalester.super.health)
                 .append(" \t| Arrows: ").append(Arbalester.super.shoot)
-                .append("\t|").append("\t| (X.Y) : ").append(Arbalester.super.pointXY.x).append(".").append(Arbalester.super.pointXY.y);
+                .append("\t|").append("\t| (X.Y) : ").append(Arbalester.super.coords.posX)
+                .append(".").append(Arbalester.super.coords.posY);
 
     }
 }

@@ -4,9 +4,10 @@ public class Warrior extends BaseHero {
     int delivery;
 
     public Warrior(String hero, String name, float health, int maxHealth, int speed, int maxDamage, int minDamage, 
-        int attack, int protection, int delivery, int pointX, int pointY) {
-        super(hero, name, health, maxHealth, speed, maxDamage, minDamage, attack, protection, pointX, pointY);
-        this.delivery = delivery;
+        int attack, int protection, int posX, int posY, int delivery) {
+        super(hero, name, health, maxHealth, speed, maxDamage, minDamage, attack, protection, posX, posY);
+     
     }
    
+
 }

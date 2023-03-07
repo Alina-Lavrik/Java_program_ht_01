@@ -3,7 +3,7 @@ package Seminar_04;
 import Seminar_04.Heroes.Magician;
 import Seminar_04.Heroes.Monk;
 import Seminar_04.Heroes.Names;
-import Seminar_04.Heroes.Point;
+import Seminar_04.Heroes.Vector2D;
 import Seminar_04.Heroes.Raider;
 import Seminar_04.Heroes.Sniper;
 import Seminar_04.Heroes.Spearman;
@@ -13,7 +13,7 @@ import Seminar_04.Heroes.BaseHero;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -26,12 +26,15 @@ public class Program {
  */
         
 static final int UNITS = 10;
+
+    public static ArrayList<BaseHero> holyTeam = new ArrayList<>();
+    public static ArrayList<BaseHero> darkTeam = new ArrayList<>();
+    public static ArrayList<BaseHero> allTeam = new ArrayList<>();
     public static void main(String[] args) {
       
-        ArrayList<BaseHero> holyTeam = new ArrayList<>();
-        ArrayList<BaseHero> darkTeam = new ArrayList<>();
-        ArrayList<BaseHero> allTeam = new ArrayList<>();
         Scanner user_input = new Scanner(System.in);
+        System.out.print("Press Enter to begin.");
+        user_input.nextLine();
         createTeam(holyTeam, 0, 1);
         createTeam(darkTeam, 3, 10);
         allTeam.addAll(holyTeam);
@@ -45,16 +48,20 @@ static final int UNITS = 10;
         // }
         
         /**Свой - чужой */
-        for (BaseHero hero: allTeam) {
-            if (holyTeam.contains(hero)) hero.step(holyTeam, darkTeam);
-            else hero.step(holyTeam, darkTeam);
+        while (true){
+            View.view();
+            user_input.nextLine();
+            for (BaseHero hero: allTeam) {
+                if (holyTeam.contains(hero)) hero.step(holyTeam, darkTeam);
+                else hero.step(holyTeam, darkTeam);
+            }
         }
+
+        // System.out.println(">>>>> Holy team <<<<<\n");
+        // printTeam(holyTeam);
         
-        System.out.println(">>>>> Holy team <<<<<\n");
-        printTeam(holyTeam);
-        
-        System.out.println(">>>>> Dark team <<<<<\n");
-        printTeam(darkTeam);
+        // System.out.println(">>>>> Dark team <<<<<\n");
+        // printTeam(darkTeam);
         
         
         }
@@ -63,39 +70,34 @@ static final int UNITS = 10;
             team.forEach(n -> System.out.println(n.getInfo()));
             System.out.println("\n****************************\n");
         }
-        /**
-        * @param team
-        * @param offset
-        * @param pointY
-        */
-        static void createTeam(ArrayList<BaseHero> team, int offset, int pointY) {
+
+        static void createTeam (ArrayList<BaseHero> team, int offset, int posY) {
             for (int i = 0; i < UNITS; i++) {
-                int rnd = new Random().nextInt(4) + offset;
+                int rnd = new Random().nextInt(4)+offset;
                 switch (rnd) {
                     case (0):
-                        team.add(new Arbalester(Arbalester.getName(), i + 1, pointY));
+                        team.add(new Villager(getName(), new Vector2D(i + 1, posY)));
                         break;
                     case (1):
-                        team.add(new Spearman(Spearman.getName(), i + 1 , pointY));
+                        team.add(new Raider(getName(), new Vector2D(i + 1, posY)));
                         break;
                     case (2):
-                        team.add(new Monk(Monk.getName(), i + 1 , pointY));
+                        team.add(new Sniper(getName(), new Vector2D(i + 1, posY)));
                         break;
                     case (3):
-                        team.add(new Raider(Raider.getName(), i + 1 , pointY));
+                        team.add(new Magician(getName(), new Vector2D(i + 1, posY)));
                         break;
                     case (4):
-                        team.add(new Magician(Magician.getName(), i + 1 , pointY));
+                        team.add(new Arbalester(getName(), new Vector2D(i + 1, posY)));
                         break;
                     case (5):
-                        team.add(new Sniper(Sniper.getName(), i + 1 , pointY));
+                        team.add(new Monk(getName(), new Vector2D(i + 1, posY)));
                         break;
                     case (6):
-                        team.add(new Villager(Villager.getName(), i + 1 , pointY));
+                        team.add(new Spearman(getName(), new Vector2D(i + 1, posY)));
                         break;
                 }
             }
-            
         }
         
         
@@ -111,7 +113,7 @@ static final int UNITS = 10;
             printTeam(team);
     }  
         
-            
+    static String getName() {
+        return String.valueOf(Names.values()[new Random().nextInt(Names.values().length)]);
+    }      
 }
-
-    

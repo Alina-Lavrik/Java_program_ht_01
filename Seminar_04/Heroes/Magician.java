@@ -3,8 +3,9 @@ package Seminar_04.Heroes;
 /**Колдун*/
 public class Magician extends Priest {
 
-    public Magician(String name, int x, int y){
-        super("Magician", name, 30.f, 30, 9, 0, -5, 17, 12, x, y, 5, 5); 
+    public Magician(String name, Vector2D coords){
+        super("Magician", name, 30.f, 30, 9, 0, -5, 17, 
+        12, coords.posX, coords.posY, 5, 5); 
     }
 
     @Override
@@ -14,7 +15,8 @@ public class Magician extends Priest {
                 .append("\t| ATK:\t").append(Magician.super.attack)
                 .append("\t| Health:\t").append(Magician.super.health)
                 .append(" \t| MP:\t").append(Magician.super.mana)
-                .append("\t|").append("\t| (X.Y) : ").append(Magician.super.pointXY.x).append(".").append(Magician.super.pointXY.y);
+                .append("\t|").append("\t| (X.Y) : ").append(Magician.super.coords.posX)
+                .append(".").append(Magician.super.coords.posY);
     }
 
 }

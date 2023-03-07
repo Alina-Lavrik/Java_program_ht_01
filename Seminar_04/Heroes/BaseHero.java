@@ -11,14 +11,14 @@ public abstract class BaseHero implements GameInterfase {
     protected static Random r;
     protected int maxDamage, minDamage;
     protected int attack, protection;
-    protected Point pointXY;
+    protected Vector2D coords;
     protected String state;
     protected int maxHealth;
    
 
 /**Конструктор который отвечает за инициализацию */
-public BaseHero(String hero, String name, float health, int maxHealth, int speed, int maxDamage, int minDamage, int attack, int protection, 
-    int x, int y) {
+public BaseHero(String hero, String name, float health, int maxHealth, int speed, int maxDamage, int minDamage,
+    int attack, int protection, int posX, int posY) {
     this.hero = hero;
     this.name = name;
     this.health = health;
@@ -28,15 +28,25 @@ public BaseHero(String hero, String name, float health, int maxHealth, int speed
     this.minDamage = minDamage;
     this.attack = attack;
     this.protection = protection;
-    pointXY = new Point(x, y);
+    coords = new Vector2D(posX, posY);
     state = "Stand";
     
 }
-
-
-public static String getName(){
-    return String.valueOf(Names.values()[new Random().nextInt(0, Names.values().length)]);
+@Override
+public String toString() {
+    return name +
+            " H:" + Math.round(health) +
+            " P:" + protection +
+            " A:" + attack +
+            " Dmg:" + Math.round(Math.abs((minDamage + maxDamage)/2)) +
+            " " + state;
 }
+
+public int[] getCoords() {return new int[]{coords.posX, coords.posY};}
+
+// public static String getName(){
+//     return String.valueOf(Names.values()[new Random().nextInt(0, Names.values().length)]);
+// }
 
 public int getSpeed() {return speed;}
 
@@ -51,7 +61,7 @@ public String getQueue() {
 @Override
     public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) {}
 
-    public void getDamage(float damage) {
+    protected void getDamage(float damage) {
         this.health -= damage;
         if (health <= 0) {
             health = 0;
@@ -65,19 +75,15 @@ public String getQueue() {
         double min = Double.MAX_VALUE;
         int index = 0;
         for (int i = 0; i < team.size(); i++) {
-            if (min > pointXY.getDistance(team.get(i).pointXY)) {
+            if(min > coords.getDistance(team.get(i).coords) && !team.get(i).state.equals("Die")) {
                 index = i;
-                min = pointXY.getDistance(team.get(i).pointXY);
+                min = coords.getDistance(team.get(i).coords);
             }
         }
         return index;
     }
     @Override
     public StringBuilder getInfo() {return new StringBuilder(""); }
-
-
-
-
 
 }
 

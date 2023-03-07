@@ -3,9 +3,9 @@ package Seminar_04.Heroes;
 /**Монах*/
 public class Monk extends Priest {
 
-    public Monk(String name, int x, int y){
+    public Monk(String name, Vector2D coords){
         super("Monk", name, 30.f, 30, 5, 0, -4, 12,
-         7, x, y, 5, 5);
+         7, coords.posX, coords.posY, 5, 5);
         
     }
 
@@ -16,7 +16,8 @@ public class Monk extends Priest {
                 .append("\t| ATK:\t").append(Monk.super.attack)
                 .append("\t| Health:\t").append(Monk.super.health)
                 .append(" \t| MP:\t").append(Monk.super.mana)
-                .append("\t|").append("\t| (X.Y) : ").append(Monk.super.pointXY.x).append(".").append(Monk.super.pointXY.y);
+                .append("\t|").append("\t| (X.Y) : ").append(Monk.super.coords.posX)
+                .append(".").append(Monk.super.coords.posY);
     }
 
 }

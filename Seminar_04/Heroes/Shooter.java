@@ -8,8 +8,8 @@ public class Shooter extends BaseHero{
     protected int range;
       
         public Shooter(String hero, String name, float health, int maxHealth, int speed, int maxDamage, int minDamage, 
-        int attack, int protection, int shoot, int x, int y, int range) {
-            super(hero, name, health, maxHealth, speed, maxDamage, minDamage, attack, protection, x, y);
+        int attack, int protection, int shoot, int posX, int posY, int range) {
+            super(hero, name, health, maxHealth, speed, maxDamage, minDamage, attack, protection, posX, posY);
             this.shoot = shoot;
             this.range = range;
 
@@ -27,10 +27,23 @@ public class Shooter extends BaseHero{
         victim.getDamage(damage);
         for (BaseHero hero : team1) {
             if (hero.getInfo().toString().split(" ")[0].equals("Villager") && 
-            hero.state.equals("Stand"));
+            hero.state.equals("Stand")) {
             hero.state = "Busy";
             return;
-        }     
-        shoot--;
+        }  
+    }   
+    shoot--;
     }  
-}    
+    
+    @Override
+    public String toString() {
+        return name +
+                " H:" + Math.round(health) +
+                " D:" + protection +
+                " A:" + attack +
+                " Dmg:" + Math.round(Math.abs((minDamage+maxDamage)/2)) +
+                " Shots:" + shoot + " " +
+                state;
+    }
+
+}
